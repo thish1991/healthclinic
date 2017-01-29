@@ -12,17 +12,15 @@ if (isset($_POST["button"])) {
         $maxpatid = $row[0];
         $maxpatid++;
     }
-    echo $maxpatid;
-//    echo ''.$_POST[pfn].'.'.$_POST[pln].'.'.$_POST[email].'.'.$_POST[contact].'.'.$_POST[password];
+
 // Insert records to patient table
     $sql = "INSERT INTO patient(patid,patfname,patlname,emailid,contactno,password)
 VALUES
 ('$maxpatid','$_POST[pfn]','$_POST[pln]','$_POST[email]','$_POST[contact]','$_POST[password]')";
 
-    echo print_r(mysqli_query($con,"SELECT * FROM patient"));
-//    if (!mysqli_query($con, $sql)) {
-//        die('Error: ' . mysqli_error());
-//    }
+    if (!mysqli_query($con, $sql)) {
+        die('Error: ' . mysqli_error());
+    }
 }
 
 ?>
